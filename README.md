@@ -28,15 +28,15 @@ A reproducible NLP portfolio project for binary sentiment classification of movi
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-pip install torch transformers pandas scikit-learn tqdm
+pip install -r requirements.txt
+python src/split_data.py /path/to/IMDB_Dataset.csv --output-dir data
 ```
 
-Prepare the IMDb dataset as `data/imdb_train.csv` and `data/imdb_test.csv`, then run:
+Then train and evaluate:
 
 ```bash
-python src/run_imdb.py --train
-python src/run_imdb.py --evaluate
-python src/run_imdb.py --predict "It was an unexpectedly moving film."
+python src/run_imdb.py --train --data-dir data --output-dir weights
+python src/run_imdb.py --evaluate --data-dir data --output-dir weights
 ```
 
 For Amazon reviews, prepare the source dataset and use the corresponding `run_amazon.py` workflow.
@@ -48,4 +48,3 @@ Datasets are intentionally excluded from this repository because of size and red
 ## Portfolio notes
 
 The original experiments report approximately 92% IMDb accuracy. Re-run evaluation after changing the model, split, or preprocessing before quoting a metric in a résumé or interview.
-

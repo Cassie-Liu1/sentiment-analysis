@@ -205,10 +205,11 @@ def evaluate(model_dir="weights/"):
 
 
 
-path = './'
-os.makedirs(path, exist_ok=True)
-train(epochs=10, output_dir=path)
-evaluate(model_dir=path)
+if __name__ == "__main__":
+    path = './weights'
+    os.makedirs(path, exist_ok=True)
+    train(epochs=10, output_dir=path)
+    evaluate(model_dir=path)
 
     
 

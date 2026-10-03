@@ -1,5 +1,6 @@
 import re
 import os
+import argparse
 
 import numpy as np
 import torch
@@ -69,8 +70,8 @@ def read_amazon_data(filename):
     return data
 
 
-def prepare_dataloader(tokenizer, sampler=RandomSampler, train=False):
-    filename = "imdb_train.csv" if train else "imdb_test.csv"
+def prepare_dataloader(tokenizer, data_dir="data", sampler=RandomSampler, train=False):
+    filename = os.path.join(data_dir, "imdb_train.csv" if train else "imdb_test.csv")
     
     data = read_imdb_data(filename)
     y = np.append(np.ones(50), np.zeros(50))
@@ -182,33 +183,48 @@ class Transformers:
         self.model = BertForSequenceClassification.from_pretrained(model_dir)
         self.model.to(self.device)
 
-def train(epochs=20, output_dir="weights/"):
+def train(epochs=20, output_dir="weights/", data_dir="data"):
     num_labels = 2  # negative and positive reviews
     config = BertConfig.from_pretrained('bert-base-uncased', num_labels=num_labels)
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
     model = BertForSequenceClassification.from_pretrained('bert-base-uncased', config=config)
 
-    dataloader = prepare_dataloader(tokenizer, train=True)
+    dataloader = prepare_dataloader(tokenizer, data_dir=data_dir, train=True)
     predictor = Transformers(tokenizer)
     predictor.train(dataloader, model, epochs)
 
     model.save_pretrained(output_dir)
     tokenizer.save_pretrained(output_dir)
 
-def evaluate(model_dir="weights/"):
+def evaluate(model_dir="weights/", data_dir="data"):
     tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
 
-    dataloader = prepare_dataloader(tokenizer, train=False, sampler=None)
+    dataloader = prepare_dataloader(tokenizer, data_dir=data_dir, train=False, sampler=None)
     predictor = Transformers(tokenizer)
     predictor.load(model_dir=model_dir)
     predictor.evaluate(dataloader)
 
 
 
-path = './'
-os.makedirs(path, exist_ok=True)
-train(epochs=10, output_dir=path)
-evaluate(model_dir=path)
+def main():
+    parser = argparse.ArgumentParser(description="Train or evaluate an IMDb sentiment classifier.")
+    parser.add_argument("--train", action="store_true")
+    parser.add_argument("--evaluate", action="store_true")
+    parser.add_argument("--data-dir", default="data")
+    parser.add_argument("--output-dir", default="weights")
+    parser.add_argument("--epochs", type=int, default=3)
+    args = parser.parse_args()
+    if not args.train and not args.evaluate:
+        parser.error("choose --train and/or --evaluate")
+    if args.train:
+        os.makedirs(args.output_dir, exist_ok=True)
+        train(epochs=args.epochs, output_dir=args.output_dir, data_dir=args.data_dir)
+    if args.evaluate:
+        evaluate(model_dir=args.output_dir, data_dir=args.data_dir)
+
+
+if __name__ == "__main__":
+    main()
 
     
 
