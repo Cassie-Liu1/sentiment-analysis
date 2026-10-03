@@ -1,0 +1,12 @@
+__pycache__/
+.venv/
+venv/
+.ipynb_checkpoints/
+*.pyc
+data/
+artifacts/
+checkpoints/
+*.zip
+*.csv
+*.bin
+
