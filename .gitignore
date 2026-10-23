@@ -9,4 +9,5 @@ checkpoints/
 *.zip
 *.csv
 *.bin
-
+weights*/
+*.safetensors

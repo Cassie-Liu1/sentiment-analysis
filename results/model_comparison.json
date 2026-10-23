@@ -1,0 +1,15 @@
+{
+  "dataset": "Amazon balanced sample",
+  "train_count": 16000,
+  "validation_count": 4000,
+  "test_count": 2000,
+  "seed": 42,
+  "baseline_accuracy": 0.887,
+  "baseline_macro_f1": 0.8869745692780876,
+  "distilbert_accuracy": 0.9315,
+  "distilbert_macro_f1": 0.9314518620701387,
+  "accuracy_difference_percentage_points": 4.449999999999998,
+  "selection": "lowest validation loss",
+  "speed_comparison": "not measured",
+  "scope": "single seed, sampled data; no statistical significance claim"
+}

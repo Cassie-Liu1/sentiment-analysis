@@ -1,0 +1,15 @@
+{
+  "test_count": 2000,
+  "error_count": 137,
+  "accuracy": 0.9315,
+  "positive_predicted_negative": 95,
+  "negative_predicted_positive": 42,
+  "errors_with_score_at_least_0.9": 71,
+  "truncated_test_count": 4,
+  "truncated_error_count": 1,
+  "max_length": 256,
+  "test_file_sha256": "bc1b74301084d59b4d1552b7a6d91071d174a8c2093928d8ca078c4e928ffec5",
+  "model_sha256": "78eea2d154f97f1ff93ab59c532dfb19807fcf08e4e644b1ed9e66780b9aa418",
+  "score_note": "Uncalibrated maximum softmax score, not probability of correctness",
+  "row_note": "Zero-based index after shared cleaning and deduplication"
+}

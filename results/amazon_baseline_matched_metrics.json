@@ -1,0 +1,78 @@
+{
+  "model": "TF-IDF + LogisticRegression",
+  "seed": 42,
+  "sampling": "balanced sample from first chunks of original train/test CSVs; not full-dataset evaluation",
+  "train_count": 16000,
+  "validation_count": 4000,
+  "validation_size": 0.2,
+  "validation_report": {
+    "negative": {
+      "precision": 0.8902018709995076,
+      "recall": 0.904,
+      "f1-score": 0.8970478789382287,
+      "support": 2000.0
+    },
+    "positive": {
+      "precision": 0.9024885728796344,
+      "recall": 0.8885,
+      "f1-score": 0.8954396573444192,
+      "support": 2000.0
+    },
+    "accuracy": 0.89625,
+    "macro avg": {
+      "precision": 0.896345221939571,
+      "recall": 0.89625,
+      "f1-score": 0.896243768141324,
+      "support": 4000.0
+    },
+    "weighted avg": {
+      "precision": 0.896345221939571,
+      "recall": 0.89625,
+      "f1-score": 0.8962437681413239,
+      "support": 4000.0
+    }
+  },
+  "test_count": 2000,
+  "removed_test_overlap": 0,
+  "report": {
+    "negative": {
+      "precision": 0.8757281553398059,
+      "recall": 0.902,
+      "f1-score": 0.8886699507389163,
+      "support": 1000.0
+    },
+    "positive": {
+      "precision": 0.8989690721649485,
+      "recall": 0.872,
+      "f1-score": 0.8852791878172589,
+      "support": 1000.0
+    },
+    "accuracy": 0.887,
+    "macro avg": {
+      "precision": 0.8873486137523772,
+      "recall": 0.887,
+      "f1-score": 0.8869745692780876,
+      "support": 2000.0
+    },
+    "weighted avg": {
+      "precision": 0.8873486137523771,
+      "recall": 0.887,
+      "f1-score": 0.8869745692780875,
+      "support": 2000.0
+    }
+  },
+  "confusion_matrix_labels": [
+    "negative",
+    "positive"
+  ],
+  "confusion_matrix": [
+    [
+      902,
+      98
+    ],
+    [
+      128,
+      872
+    ]
+  ]
+}

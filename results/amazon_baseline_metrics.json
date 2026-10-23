@@ -1,0 +1,49 @@
+{
+  "model": "TF-IDF + LogisticRegression",
+  "seed": 42,
+  "sampling": "balanced sample from first chunks of original train/test CSVs; not full-dataset evaluation",
+  "train_count": 20000,
+  "test_count": 2000,
+  "removed_test_overlap": 0,
+  "report": {
+    "negative": {
+      "precision": 0.8844660194174757,
+      "recall": 0.911,
+      "f1-score": 0.8975369458128079,
+      "support": 1000.0
+    },
+    "positive": {
+      "precision": 0.9082474226804124,
+      "recall": 0.881,
+      "f1-score": 0.8944162436548223,
+      "support": 1000.0
+    },
+    "accuracy": 0.896,
+    "macro avg": {
+      "precision": 0.896356721048944,
+      "recall": 0.896,
+      "f1-score": 0.8959765947338151,
+      "support": 2000.0
+    },
+    "weighted avg": {
+      "precision": 0.8963567210489441,
+      "recall": 0.896,
+      "f1-score": 0.8959765947338151,
+      "support": 2000.0
+    }
+  },
+  "confusion_matrix_labels": [
+    "negative",
+    "positive"
+  ],
+  "confusion_matrix": [
+    [
+      911,
+      89
+    ],
+    [
+      119,
+      881
+    ]
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "arguments": {
+    "train": true,
+    "evaluate": true,
+    "predict": null,
+    "data_dir": "data",
+    "output_dir": "weights-distilbert-amazon",
+    "epochs": 3,
+    "batch_size": 16,
+    "model_name": "distilbert-base-uncased",
+    "train_file": "amazon_train.csv",
+    "eval_file": "amazon_test.csv",
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "validation_size": 0.2,
+    "patience": 2,
+    "max_length": 256,
+    "device": "mps"
+  },
+  "seed": 42,
+  "device": "mps",
+  "train_count": 16000,
+  "validation_count": 4000,
+  "selection": "lowest validation loss",
+  "token_length_sample_count": 1000,
+  "token_length_percentiles": {
+    "p50": 93.0,
+    "p90": 189.10000000000002,
+    "p95": 213.0
+  },
+  "sample_truncation_fraction": 0.003,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2860300423167646,
+      "validation_loss": 0.17719367556460203,
+      "validation_accuracy": 0.9385,
+      "validation_macro_f1": 0.9384766057293286
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.1368365133854095,
+      "validation_loss": 0.2007767111128196,
+      "validation_accuracy": 0.94325,
+      "validation_macro_f1": 0.943247783116528
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.07733854695956688,
+      "validation_loss": 0.2314494641041383,
+      "validation_accuracy": 0.94125,
+      "validation_macro_f1": 0.9412497025766193
+    }
+  ],
+  "torch_version": "2.14.1"
+}
